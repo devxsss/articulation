@@ -9,14 +9,6 @@
     using namespace std;
     #define endl '\n';
     const int MXSIZE = 1e6+6;
-     
-     
-    int parent [MXSIZE];
-    int child  [MXSIZE];
-    int low    [MXSIZE];
-    int tym    [MXSIZE];
-    bool seen  [MXSIZE];
-    bool is_cut[MXSIZE];
     static int times=0;
 
      typedef struct u{
