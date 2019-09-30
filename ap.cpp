@@ -19,11 +19,11 @@
        string color;
        bool ap;
        int low;
-       u(int vals, string cols):val(vals),color(cols),ap(false) {}
+       u(int vals, string cols):val(vals),color(cols),ap(false) {} //constructor for nodes
        vector<u*>neigh;
        u() {};
      }u;
- vector<u*>adj[MXSIZE];
+ vector<u*>adj[MXSIZE]; //vector of nodes 
 
 void dfs(vector<u*>adj[],u* uk){
 
@@ -39,18 +39,18 @@ u*vk=adj[uk->val][0]->neigh[k];
  if(vk->color=="white" && vk->val!=uk->par)
 {
   vk->par=uk->val;
-  dfs(adj,vk);//pas balik 
+  dfs(adj,vk); //will recursively dfs
   if(uk->par==-1){
     if(uk->neigh.size()>=2){
       uk->ap=true;
     }
   }else{
-    uk->low=min(uk->low,vk->low);
+    uk->low=min(uk->low,vk->low); //to update uk->low with the first discover time
     if(vk->low >=uk->d){
-      uk->ap=true;
+      uk->ap=true; 
     }
   }
-}else if(vk->val!=uk->par && (vk->d<uk->d)){//untuk kalo ktemu back edge
+}else if(vk->val!=uk->par && (vk->d<uk->d)){//if there is back edge update uk.low with vk.discover first time
 uk->low=min(uk->low,vk->d); //back edge 
 }
 uk->color="black";
@@ -62,7 +62,7 @@ uk->color="black";
 
 
 
-void buildgraph(){
+void buildgraph(){ //make undirected graph
 u* n1=new u(1,"white");
 u* n2=new u(2,"white");
 u* n3=new u(3,"white");
