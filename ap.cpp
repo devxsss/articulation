@@ -11,7 +11,8 @@
     const int MXSIZE = 1e6+6;
     static int times=0;
 
-     typedef struct u{
+    //struct for node u
+     typedef struct u{ 
        int par;
        int val;
        int d;
@@ -129,6 +130,8 @@ adj[8].push_back(n8);
       buildgraph();
          adj[2][0]->par=-1;
       dfs(adj,adj[2][0]);
+
+      //for print articulation point
        for(int i=1;i<=8;i++){
          for(int j=0;j<adj[i].size();j++)
          if(adj[i][j]->ap==true)
